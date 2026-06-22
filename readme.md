@@ -1,5 +1,3 @@
-Perfeito, deixei em formato mais profissional, limpo e sem emojis:
-
 ---
 
 # Software EPI (Offline Version)
