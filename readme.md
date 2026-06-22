@@ -1,6 +1,9 @@
 # Software-EPI
 
-Aplicativo web simples para cadastro de funcionários e gerenciamento de EPIs.
+Este aplicativo é uma versão offline do app principal disponivel em:
+https://github.com/lucimaraalvesramalho/Software-EPI
+
+Aplicativo para cadastro de funcionários e gerenciamento de EPIs.
 
 ## Visão geral
 
