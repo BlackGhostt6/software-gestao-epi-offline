@@ -1,93 +1,146 @@
-# Software-EPI
+Perfeito, deixei em formato mais profissional, limpo e sem emojis:
 
-Este aplicativo é uma versão offline do app principal disponivel em:
-https://github.com/lucimaraalvesramalho/Software-EPI
+---
 
-Aplicativo para cadastro de funcionários e gerenciamento de EPIs.
+# Software EPI (Offline Version)
+
+Este projeto é uma versão offline do sistema principal disponível em:
+[https://github.com/lucimaraalvesramalho/Software-EPI](https://github.com/lucimaraalvesramalho/Software-EPI)
+
+Sistema web para gerenciamento de EPIs e controle de funcionários, desenvolvido com Flask e SQLite, permitindo execução local sem necessidade de servidor externo.
+
+---
 
 ## Visão geral
 
-- `app.py`: ponto de entrada do Flask.
-- `database.py`: configuração da conexão com o banco de dados.
-- `controller/routes.py`: rotas e lógica de CRUD.
-- `models/tables.py`: definição das tabelas do banco.
-- `static/`: arquivos estáticos (CSS e JavaScript).
-- `templates/`: páginas HTML renderizadas pelo Flask.
+O sistema permite:
+
+* Cadastro de funcionários
+* Cadastro de EPIs
+* Registro de entrega e devolução de equipamentos
+* Consulta e gerenciamento de registros
+* Interface web renderizada pelo Flask
+
+---
 
 ## Estrutura do projeto
 
 ```
 app.py
+
 controller/
-├── routes.py
+└── routes.py
+
 models/
-├── tables.py
-static/
-├── css/
-│   ├── atualizar-registros.css
-│   ├── cadastro-epi.css
-│   ├── cadastro-funcionario.css
-│   ├── criar-registro.css
-│   ├── dashboard.css
-│   └── global.css
-├── epis.js
-├── funcionarios.js
-├── registros.js
-├── script.js
-templates/
-└── components/
-│   └── header.html
-├── base.html
-├── cadastrar-epi.html
-├── cadastrar-funcionario.html
-├── criar-registro.html
-├── epis.html
-├── funcionarios.html
-├── index.html
-├── registros.html
+└── tables.py
+
 database.py
 script.sql
 icon.ico
+
+static/
+├── css/
+│   ├── global.css
+│   ├── dashboard.css
+│   ├── cadastro-epi.css
+│   ├── cadastro-funcionario.css
+│   ├── criar-registro.css
+│   ├── atualizar-registros.css
+│   └── outros arquivos
+
+├── js/
+│   ├── script.js
+│   ├── funcionarios.js
+│   ├── epis.js
+│   └── registros.js
+
+templates/
+├── base.html
+├── index.html
+├── cadastrar-funcionario.html
+├── cadastrar-epi.html
+├── criar-registro.html
+├── funcionarios.html
+├── epis.html
+├── registros.html
+└── components/
+    └── header.html
 ```
 
-## Requisitos
+---
 
-- Python 3.10+ (ou compatível)
-- Flask
-- MySQL Connector/Python
+## Tecnologias utilizadas
 
-## Instalação
+* Python 3.10+
+* Flask
+* SQLite
+* HTML5
+* CSS3
+* JavaScript
+* Matplotlib
 
-1. Crie e ative um ambiente virtual:
+---
+
+## Como executar o projeto
+
+### 1. Criar ambiente virtual (opcional)
 
 ```bash
 python -m venv venv
 venv\Scripts\activate
 ```
 
-2. Instale as dependências:
+---
+
+### 2. Instalar dependências
 
 ```bash
 pip install flask matplotlib
 ```
 
-## Execução
+---
+
+### 3. Executar aplicação
 
 ```bash
 python app.py
 ```
 
-Então acesse `http://127.0.0.1:5000` no navegador.
+Acesse no navegador:
+
+```
+http://127.0.0.1:5000
+```
+
+---
+
+## Banco de dados
+
+O projeto utiliza SQLite local.
+
+* Arquivo: database.db
+* Estrutura pode ser recriada utilizando script.sql
+
+---
 
 ## Observações
 
-- O formulário de cadastro de funcionário usa JavaScript para enviar os dados via `fetch`.
-- Se o JS não carregar, confirme se o caminho do script em `templates/base.html` está correto.
-- Ajuste as rotas e a configuração do banco conforme necessário.
+* As requisições do frontend são feitas via fetch para a API Flask.
+* O projeto foi desenvolvido para uso local/offline.
+* Certifique-se de que a pasta static e templates estejam no mesmo nível da aplicação.
+
+---
 
 ## Extensões recomendadas para VS Code
 
-- Thunder Client
-- Database Client JDBC
-- MySQL
-- python (Pylance, Python, Python Debugger e Python Enviroments)
+* Python (Pylance)
+* Thunder Client
+* SQLite Viewer
+
+---
+
+## Licença
+
+Projeto acadêmico / educacional.
+
+---
