@@ -1,5 +1,7 @@
 *.spec
 build/
+dist/
+
 NOTIFICACOES_README.md
 
 __pycache__/*
