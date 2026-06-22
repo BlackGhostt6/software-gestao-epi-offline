@@ -3,7 +3,7 @@
 # Software EPI (Offline Version)
 
 Este projeto é uma versão offline do sistema principal disponível em:
-[https://github.com/lucimaraalvesramalho/Software-EPI](https://github.com/lucimaraalvesramalho/Software-EPI)
+https://github.com/lucimaraalvesramalho/Software-EPI
 
 Sistema web para gerenciamento de EPIs e controle de funcionários, desenvolvido com Flask e SQLite, permitindo execução local sem necessidade de servidor externo.
 
