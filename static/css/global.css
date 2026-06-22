@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+*{
+    box-sizing: border-box;
+    color: var(--text-color);
+}
+
+:root{
+    --bg-color: #f3fffc;
+    --surface-card: #ffffff;
+    --surface-muted: #f8f7ff;
+    --primary: #7d6cfdd9;
+    --secondary: rgba(107, 114, 239, 0.263);
+    --accent: rgba(133, 79, 232, 0.618);
+    --text-color: #042016;
+    --muted-text: #6b7280;
+    --tertiary: #e3e1ff;
+    --input-border: #000000;
+    --edit-color: #892222;
+    --bg-table: #e9e7ff;
+    --table-header: #b5ade8;
+    --table-border: #eef2f7;
+    --chart-start: #f8f7ff;
+    --chart-end: #eef7f4;
+    --badge-success-bg: #e8f7ee;
+    --badge-success-text: #15803d;
+    --badge-warning-bg: #fff7db;
+    --badge-warning-text: #b45309;
+    --shadow: 2px 0 20px 5px rgba(0, 0, 0, 0.162);
+    --img-shadow: 0px 0px 12px rgba(0, 0, 0, 0.259);
+}
+
+.dark-theme{
+    --bg-color: #101312;
+    --surface-card: #171c1a;
+    --surface-muted: #1d2421;
+    --primary: #5349ae;
+    --secondary: rgba(49, 53, 120, 0.425);
+    --accent: rgba(133, 79, 232, 0.32);
+    --text-color: #e9fff7;
+    --muted-text: #a7b5ae;
+    --tertiary: #191733;
+    --input-border: #808080;
+    --edit-color: #e37f7f;
+    --bg-table: #1f1c36;
+    --table-header: #2f2a5a;
+    --table-border: #2a3330;
+    --chart-start: #1b2330;
+    --chart-end: #12251f;
+    --badge-success-bg: #123423;
+    --badge-success-text: #8ee5a2;
+    --badge-warning-bg: #3d2c0d;
+    --badge-warning-text: #f7c96a;
+    --shadow: 0 0 10px 5px rgba(255, 255, 255, 0.025);
+    --img-shadow: 2px 0px 8px rgba(255, 255, 255, 0.111);
+}
+
+body{
+    font-family: "Inter", sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    background-color: var(--bg-color);
+}
+
+header{
+    position: fixed;
+    bottom: 20px;
+    display: flex;
+    margin-top: 1%;
+    width: fit-content;
+    height: 8vh;
+    align-items: center;
+    justify-content: center;
+    padding: 2%;
+    border: var(--secondary) 1px solid;
+    border-radius: 30px;
+    background-color: var(--secondary);
+    transition: transform 0.3s ease;
+    backdrop-filter:blur(6px);
+    z-index: 100;
+}
+
+header.hide{
+    transform: translateY(200%)
+}
+
+.link-container{
+    height: fit-content;
+    padding: 1rem;
+    border-radius: 15px;
+    transition: all 0.35s ease-in-out;
+}
+
+.links{
+    width: 2rem;
+    overflow: hidden;
+
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 1.2rem;
+    font-weight: 500;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    transition: all 0.25s ease-in-out;
+}
+
+.link-container:hover{
+    background-color: var(--accent);
+}
+
+.link-container:hover .links{
+    width: fit-content;
+    color: var(--accent);
+    transform: translateY(-2px);
+}
+
+.links .icon{
+    flex-shrink: 0;
+    transition: opacity 0.15s ease-in-out;
+}
+
+.links .text{
+    opacity: 0;
+    white-space: nowrap;
+    transition: opacity 0.35s ease-in-out;
+}
+
+.link-container:hover .text{
+    opacity: 1;
+}
+
+
+.content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#theme-btn{
+    padding: 1.2rem 1.1rem 1rem 1.1rem;
+    border-radius: 5px;
+    background: none;
+    border: none;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    font-size: medium;
+}
+
+.theme{
+    padding:0;
+}
+
+nav{
+    display: flex;
+    flex-direction: row;
+    gap:2rem;
+}
+
+.link-container.active {
+    background-color: var(--accent);
+    box-shadow: var(--shadow);
+}
+
+/* mantém o link expandido igual hover */
+.link-container.active .links {
+    width: fit-content;
+    color: var(--accent);
+    transform: translateY(-2px);
+}
+
+/* mostra o texto sempre */
+.link-container.active .text {
+    opacity: 1;
+}
+
+input[type="date"]{
+    cursor: text;
+}
+
+@view-transition {
+    navigation: auto;
+}
+
+::view-transition-old(root) {
+    animation: none;
+}
+
+::view-transition-new(root) {
+    animation: fade-in .2s ease;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+}

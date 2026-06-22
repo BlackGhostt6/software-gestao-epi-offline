@@ -1,0 +1,266 @@
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 12vh;
+}
+
+.cadastro{
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 15px;
+    width: fit-content;
+    max-width: 800px;
+    height: fit-content;
+    max-height: 600px;
+    border: none;
+    border-radius: 25px;
+    background-color: var(--bg-color);
+    box-shadow: var(--shadow);
+    padding: 0;
+    overflow: hidden;
+    padding-left: 2%    ;
+}
+
+form{
+    height: 100%;
+    flex: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    padding: 5% 1% 5% 0;
+    transform: scale(1);
+    font-size: small;
+}
+
+input{
+    border-radius: 8px;
+    height: 1.6rem;
+    width: 25vw;
+    text-align: center;
+    border:none;
+    background-color: var(--tertiary);
+    color: var(--text-color);
+}
+
+.bg-img{
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    user-select: none;
+    pointer-events: none;
+}
+
+form button{
+    height: 2.5rem;
+    width: 25vw;
+    border-radius: 15px;
+    background-color: var(--primary);
+    border: none;
+    transition: all 0.1s ease-in-out;
+    cursor: pointer;
+    font-size: medium;
+    font-weight: 550;
+    margin-top: 2%;
+    margin-bottom: 0;
+}
+
+form button:hover{
+    background-color: var(--accent);
+    transform: translateY(1px);
+}
+
+:root{
+    --backghround-tool: rgba(129,135,238,.18);
+    --background-tools-delete: rgba(255,80,80,.15);
+    --background-tool-hover: rgba(132,79,232,.2);
+    --radio-border: rgba(129,135,238,.6);
+}
+
+table{
+    width: 100%;
+    border-collapse: separate;
+    border-radius: 12px;
+    overflow: hidden;
+    border-spacing: 0;
+    border: 1px var(--radio-border) solid;
+    margin-bottom: 15vh;
+}
+
+h3{
+    margin: 0;
+}
+
+th, td {
+    border-bottom: var(--radio-border) 1px solid;
+    border-left: none;
+    padding: 8px 20px;
+    text-align: left;
+    background: var(--bg-table);
+    text-align: center;
+}
+
+
+th:first-child, td:first-child{
+    border-left: none;
+}
+
+tr:last-child td{
+    border-bottom:none;
+}
+
+th {
+    background-color: var(--table-header);
+    padding: 5px;
+}
+
+
+*{
+    color: var(--text-color);
+}
+
+#table-wrapper{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    position: absolute;
+    top:30px;
+    right: 30px;
+    text-decoration: none;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    padding: 0.8rem 1rem;
+    border-radius: 999px;
+    font-weight: 600;
+    box-shadow: var(--shadow);
+}
+
+#toolbar{
+    position: sticky;
+    top:5vh;
+    max-height:0;
+    margin:0;
+    opacity: 0;
+    visibility: hidden;
+    transition: .2s ease;
+    width:fit-content;
+    display:flex;
+    align-items:center;
+    gap:.5rem;
+    padding:.5rem;
+    margin-bottom:.4rem;
+    background:var(--backghround-tool);
+    border:1px solid rgba(129,135,238,.4);
+    border-radius:14px;
+    backdrop-filter:blur(8px);
+}
+
+#toolbar.ativo{
+    max-height:max-content;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    opacity: 1;
+    visibility: visible;
+    width: fit-content;
+}
+
+#toolbar .save-btn {
+    visibility: hidden;
+    opacity: 0;
+    max-width: 0;
+    pointer-events: none;
+    transition: .2s ease;
+}
+
+#toolbar.editando .save-btn {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+    max-width: fit-content;
+}
+
+.toolbar-btn{
+    display:flex;
+    align-items:center;
+    gap:.5rem;
+    padding:.65rem 1rem;
+    border:none;
+    border-radius:10px;
+    background:transparent;
+    cursor:pointer;
+    font-size:.95rem;
+    font-weight:600;
+    transition:.2s ease;
+}
+
+.toolbar-btn:hover{
+    background:var(--background-tool-hover);
+}
+
+.toolbar-btn .fa{
+    font-size:1rem;
+}
+
+.delete-btn:hover{
+    background:var(--background-tools-delete);
+}
+
+#registrosTable{
+    margin-top:0;
+}
+
+input[type="radio"] {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--radio-border);
+    border-radius: 50%;
+    display: grid;
+    place-content: center;
+    cursor: pointer;
+    transition: .2s ease;
+    background: transparent;
+}
+
+input[type="radio"]::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    transform: scale(0);
+    transition: .15s ease;
+    background: var(--accent);
+}
+
+input[type="radio"]:checked {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(129,135,238,.15);
+}
+
+input[type="radio"]:checked::before {
+    transform: scale(1);
+}
+
+.edit{
+    border-radius: 5px;
+    text-align: center;
+    border: none;
+    background: none;
+    color: var(--edit-color);
+    margin: 0;
+    padding: 6px;
+    width: 70%;
+    font-size: medium;
+}

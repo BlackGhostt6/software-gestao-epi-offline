@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/atualizar-registros.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<h1>Tabela de Registros</h1>
+<h3>Selecione uma linha para editar os dados</h3>
+
+<a href="{{ url_for('api_routes.criar_registro') }}" class="btn-primary">
+            <i class="fa-solid fa-plus"></i>
+            Novo Registro
+</a>
+
+<div id="table-wrapper">
+
+    <div id="toolbar">
+
+        <button class="toolbar-btn" onclick="buscarRegistros()">
+            <span class="fa fa-undo"></span>
+        </button>
+
+        <button class="toolbar-btn edit-btn" onclick="editarRegistro()">
+            <span class="fa fa-edit"></span>
+            Editar
+        </button>
+
+        <button class="toolbar-btn save-btn" id="" onclick="salvarRegistro()">
+            <span class="fa fa-save"></span>
+            Salvar
+        </button>
+
+        <button class="toolbar-btn delete-btn" onclick="deletarRegistro()">
+            <span class="fa fa-trash"></span>
+            Excluir
+        </button>
+
+    </div>
+
+
+    <table id="registrosTable">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Matrícula do Funcionário</th>
+                <th>CA do EPI</th>
+                <th>Data para Devolução do EPI</th>
+                <th>Data de entrega do EPI</th>
+                <th>Data de Troca do EPI</th>
+                <th>Motivo da devolução</th>
+            </tr>
+        </thead>
+
+        <tbody id="registrosBody">
+
+        </tbody>
+    </table>
+
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    buscarRegistros();
+});
+document.addEventListener("change", (event) => {
+    if (event.target.name === "registro") {
+        document
+            .getElementById("toolbar")
+            .classList.add("ativo");
+    }
+});
+</script>
+{% endblock %}
+{% block extra_js %}
+<script src="{{ url_for('static', filename='registros.js') }}"></script>
+{% endblock %}

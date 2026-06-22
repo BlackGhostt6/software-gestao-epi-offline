@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/cadastro-epi.css') }}">
+{% endblock %}
+{% block content %}
+<main>
+        <h1>CADASTRO DE EPI</h1>
+        <div class="cadastro">
+            <form id="epiForm">
+                <label for="nome">Nome do EPI:</label>
+                <input id="nome" name="nome_epi" type="text" placeholder="Digite o nome do EPI" required>
+                <label for="tipo">Tipo do EPI:</label>
+                <input id="tipo" name="tipo_epi" type="text" placeholder="Digite o tipo do EPI" required>
+                <label for="ca">CA do EPI:</label>
+                <input id="ca" name="certificado_aprovacao_epi" type="text" placeholder="CA 000000" value="CA " oninput="manterPrefixo(this, 'CA ')" maxlength="9" required>
+                <label for="validade_ca">Data de Validade do CA:</label>
+                <input id="validade_ca" name="validade_ca" type="date"required>
+                <div id="buttons">
+                    <button type="submit" id="submit-btn">Cadastrar</button>
+                </div>
+            </form>
+            <div id="img-cont"><img class="bg-img" src="/static/img/epi.jpg" alt=""></div>
+        </div>
+    </main> 
+{% endblock %}
+{% block extra_js %}
+<script src="{{ url_for('static', filename='epis.js') }}" defer></script>
+{% endblock %}

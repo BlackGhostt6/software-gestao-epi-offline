@@ -1,0 +1,23 @@
+<header>
+         <nav>
+            <div class="link-container theme">
+                <button id="theme-btn" class="icon" type="button"><i id="theme-icon" class="fas fa-moon"></i></button>
+            </div>
+            <div class="link-container {% if request.endpoint == 'api_routes.index' %}active{% endif %}"><a class="links" href="{{ url_for('api_routes.index') }}">
+                <span class="icon"><i class="fas fa-home"></i></span>
+                <span class="text">Início</span>
+            </a></div>
+            <div class="link-container {% if request.endpoint == 'api_routes.funcionarios' %}active{% endif %}"><a class="links" href="{{ url_for('api_routes.funcionarios') }}">
+                <span class="icon"><i class="fas fa-user-plus"></i></span>
+                <span class="text">Funcionários</span>
+            </a></div>
+            <div class="link-container {% if request.endpoint == 'api_routes.epis' %}active{% endif %}"><a class="links" href="{{ url_for('api_routes.epis') }}">
+                <span class="icon"><i class="fas fa-hard-hat"></i></span>
+                <span class="text">EPIs</span>
+            </a></div>
+            <div class="link-container {% if request.endpoint == 'api_routes.registros' %}active{% endif %}"><a class="links" href="{{ url_for('api_routes.registros') }}">
+                <span class="icon"><i class="fas fa-edit"></i></span>
+                <span class="text">registros</span>
+            </a></div>
+        </nav>
+    </header>

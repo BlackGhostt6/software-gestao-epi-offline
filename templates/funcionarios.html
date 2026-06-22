@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/cadastro-funcionario.css') }}">
+{% endblock %}
+
+{% block content %}
+<h1>Tabela de Funcionários</h1>
+<h3>Selecione uma linha para editar os dados</h3>
+
+<a href="{{ url_for('api_routes.cadastro_funcionario') }}" class="btn-primary">
+            <i class="fa-solid fa-plus"></i>
+            Novo Funcionario
+</a>
+
+<div id="table-wrapper">
+
+    <div id="toolbar">
+
+        <button class="toolbar-btn" onclick="buscarFuncionarios()">
+            <span class="fa fa-undo"></span>
+        </button>
+
+        <button class="toolbar-btn edit-btn" onclick="editarFuncionario()">
+            <span class="fa fa-edit"></span>
+            Editar
+        </button>
+
+        <button class="toolbar-btn save-btn" id="" onclick="salvarFuncionario()">
+            <span class="fa fa-save"></span>
+            Salvar
+        </button>
+
+        <button class="toolbar-btn delete-btn" onclick="deletarFuncionario()">
+            <span class="fa fa-trash"></span>
+            Excluir
+        </button>
+
+    </div>
+
+
+    <table id="funcTable">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Matrícula</th>
+                <th>Nome</th>
+                <th>CPF</th>
+                <th>Setor</th>
+                <th>Função</th>
+                <th>data de admissão</th>
+                <th>Telefone</th>
+                <th>Email</th>
+                <th>Whatsapp</th>
+            </tr>
+        </thead>
+
+        <tbody id="funcBody">
+
+        </tbody>
+    </table>
+
+</div>
+
+<script src="{{ url_for('static', filename='funcionarios.js') }}">
+</script>
+{% endblock %}

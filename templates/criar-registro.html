@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/criar-registro.css') }}">
+{% endblock %}
+{% block content %}
+   <main>
+        <h1>CRIAR REGISTROS</h1>
+        <div class="cadastro">
+            <form id="registrosForm">
+                <label for="matricula">Matrícula do Funcionário:</label>
+                <input id="matricula" name="matricula_funcionario" type="text" value="FUNC" oninput="manterPrefixo(this, 'FUNC')" placeholder="FUNC0000" maxlength="8" required>
+                <label for="ca">CA do EPI:</label>
+                <input id="ca" name="certificado_aprovacao_epi" type="text" placeholder="CA 000000" value="CA " oninput="manterPrefixo(this, 'CA ')" maxlength="9" required>
+                <label for="data-devolucao">Data para Devolução do EPI:</label>
+                <input id="data-devolucao" name="data-devolucao" type="date" required>
+                <div id="buttons">
+                    <button type="submit" id="submit-btn">Cadastrar</button>
+                </div>
+            </form>
+            <div id="img-cont"><img class="bg-img" src="/static/img/registros2.jpg" alt=""></div>
+        </div>
+    </main>
+    <script src="{{ url_for('static', filename='script.js') }}"></script> 
+{% endblock %}
+{% block extra_js %}
+<script src="{{ url_for('static', filename='registros.js') }}" defer></script>
+{% endblock %}

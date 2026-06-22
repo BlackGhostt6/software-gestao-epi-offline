@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/cadastro-funcionario.css') }}">
+{% endblock %}
+
+{% block content %}
+    <main>
+        <h1>CADASTRO DE FUNCIONÁRIOS</h1>
+        <div class="cadastro">
+                <form id="funcionarioForm">
+                    <label for="matricula">Matrícula do Funcionário:</label>
+                    <input id="matricula" name="matricula_funcionario" type="text" value="FUNC" oninput="manterPrefixo(this, 'FUNC')" placeholder="FUNC0000" maxlength="8" required>
+                    <label for="nome">Nome do Funcionário:</label>
+                    <input id="nome" name="nome_funcionario" type="text" placeholder="Nome completo" required>
+                    <label for="cpf">CPF do Funcionário:</label>
+                    <input id="cpf" oninput="formatarCPF(this)" name="cpf_funcionario" type="text" placeholder="000.000.000-00" maxlength="14" required>
+                    <label for="setor">Setor do Funcionário:</label>
+                    <input id="setor" name="setor_funcionario" type="text" placeholder="Produção" required>
+                    <label for="funcao">Função do Funcionário:</label>
+                    <input id="funcao" name="funcao_funcionario" type="text" placeholder="Operador" required>
+                    <label for="data_admissao">Data de Admissão do Funcionário:</label>
+                    <input id="data_admissao" name="data_admissao_funcionario" type="date" required>
+                    <label for="telefone">Número de Telefone:</label>
+                    <input id="telefone" oninput="formatarTelefone(this)" name="telefone" type="tel" placeholder="(00) 00000-0000" maxlength="15" required>
+                    <label for="email">Email:</label>
+                    <input id="email" name="email" type="email" placeholder="usuario@empresa.com" required>
+                    <label for="whatsapp">WhatsApp:</label>
+                    <input id="whatsapp" oninput="formatarTelefone(this)" name="whatsapp" type="tel" placeholder="(00) 00000-0000" maxlength="15" required>
+                    <div id="buttons">
+                    <button type="submit" id="submit-btn">Cadastrar</button>
+                    </div>
+                </form>
+            <div><img class="bg-img" src="/static/img/funcionario.png" alt=""></div>
+        </div>
+    </main>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+{% endblock %}
+{% block extra_js %}
+<script src="{{ url_for('static', filename='funcionarios.js') }}" defer></script>
+{% endblock %}

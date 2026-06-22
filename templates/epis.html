@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/cadastro-epi.css') }}">
+{% endblock %}
+{% block content %}
+<h1>Tabela de EPIs</h1>
+<h3>Selecione uma linha para editar os dados</h3>
+
+<a href="{{ url_for('api_routes.cadastro_epi') }}" class="btn-primary">
+            <i class="fa-solid fa-plus"></i>
+            Novo EPI
+</a>
+
+<div id="table-wrapper">
+
+    <div id="toolbar">
+
+        <button class="toolbar-btn" onclick="buscarEpi()">
+            <span class="fa fa-undo"></span>
+        </button>
+
+        <button class="toolbar-btn edit-btn" onclick="editarEpi()">
+            <span class="fa fa-edit"></span>
+            Editar
+        </button>
+
+        <button class="toolbar-btn save-btn" id="" onclick="salvarEpi()">
+            <span class="fa fa-save"></span>
+            Salvar
+        </button>
+
+        <button class="toolbar-btn delete-btn" onclick="deletarEpi()">
+            <span class="fa fa-trash"></span>
+            Excluir
+        </button>
+
+    </div>
+
+
+    <table id="epiTable">
+        <thead>
+            <tr>
+                <th></th>
+                <th>CA</th>
+                <th>EPI</th>
+                <th>Tipo</th>
+                <th>Validade do CA</th>
+            </tr>
+        </thead>
+
+        <tbody id="epiBody">
+
+        </tbody>
+    </table>
+
+</div>
+
+<script src="{{ url_for('static', filename='epis.js') }}">
+</script>
+
+{% endblock %}

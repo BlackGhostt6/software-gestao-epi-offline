@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+{% endblock %}
+
+{% block content %}
+<section class="dashboard-container">
+    <div class="dashboard-header">
+        <div>
+            <p class="eyebrow">Painel principal</p>
+            <h1>Controle de EPIs</h1>
+        </div>
+        <a href="{{ url_for('api_routes.criar_registro') }}" class="btn-primary">
+            <i class="fa-solid fa-plus"></i>
+            Novo registro
+        </a>
+    </div>
+
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-icon purple"><i class="fa-solid fa-shield-halved"></i></div>
+            <div>
+                <span>Total de EPIs</span>
+                <strong>{{ dashboard.total_epi }}</strong>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon blue"><i class="fa-solid fa-users"></i></div>
+            <div>
+                <span>Funcionários</span>
+                <strong>{{ dashboard.total_funcionarios }}</strong>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon orange"><i class="fa-solid fa-clock"></i></div>
+            <div>
+                <span>Vencendo em 30 dias</span>
+                <strong>{{ dashboard.vencendo_30_dias }}</strong>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon red"><i class="fa-solid fa-triangle-exclamation"></i></div>
+            <div>
+                <span>Vencendo em 7 dias</span>
+                <strong>{{ dashboard.vencendo_7_dias }}</strong>
+            </div>
+        </div>
+    </div>
+
+    <div class="dashboard-grid">
+        <section class="panel panel-large chart-panel">
+            <div class="panel-header">
+                <h2>EPIs devolvidos</h2>
+                <span>Situação geral</span>
+            </div>
+            <div class="chart-wrapper">
+                <img src="{{ url_for('api_routes.gerarGrafico') }}" alt="Gráfico de devolução de EPIs" class="chart-image">
+            </div>
+        </section>
+
+        <section class="panel">
+            <ul class="notification-list">
+                <li>
+                    <span class="dot warning"></span>
+                    <div>
+                        <strong>{{ panel.vencimentos_hoje }} EPIs vencem hoje</strong>
+                        <p>Atualize os registros para evitar atrasos.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="dot success"></span>
+                    <div>
+                        <strong>{{ panel.entregas_hoje }} entregas concluídas</strong>
+                        <p>Hoje já foram registrados {{ panel.entregas_hoje }} itens.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="dot danger"></span>
+                    <div>
+                        <strong>{{ panel.vencidos }} EPIs vencidos</strong>
+                        <p> Recolha os epis vencidos imediatamente.</p>
+                    </div>
+                </li>
+            </ul>
+        </section>
+    </div>
+
+    <section class="panel table-panel">
+        <div class="panel-header">
+            <h2>Últimos registros</h2>
+        </div>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Funcionário</th>
+                        <th>EPI</th>
+                        <th>Data</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for registro in dashboard.ultimos_registros %}
+                    <tr>
+                        <td>{{ registro.nome_funcionario }}</td>
+                        <td>{{ registro.nome_epi }}</td>
+                        <td>{{ registro.data_entrega }}</td>
+
+                        <td>
+                            {% if registro.data_troca %}
+                                <span class="badge success">Devolvido</span>
+                            {% else %}
+                                <span class="badge warning">Em uso</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+</tbody>
+            </table>
+        </div>
+    </section>
+</section>
+<script>document.addEventListener("change", (event) => {
+    if (event.target.name === "registro") {
+        document
+            .getElementById("toolbar")
+            .classList.add("ativo");
+    }
+});</script>
+{% endblock %}
